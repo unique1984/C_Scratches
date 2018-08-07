@@ -41,10 +41,10 @@ hex2rgb parseRgb565 ( hex2rgb hexParse )
 {
 	hex2rgb hexParsed888, parsed;
 	hexParsed888 = parseRgb888( hexParse );
-	parsed.r = ( ( hexParsed888.r >> 3 ) << 11 );
-	parsed.g = ( ( hexParsed888.g >> 2 ) << 5 );
-	parsed.b = ( hexParsed888.b >> 3 );
-	parsed.hexValue = ( parsed.r | parsed.g | parsed.b );
+	parsed.hexValue = ( ( hexParsed888.r >> 3 ) << 11 ) | ( ( hexParsed888.g >> 2 ) << 5 ) | ( hexParsed888.b >> 3 );
+	parsed.r = ( ( parsed.hexValue >> 11 ) & 0x1F );
+	parsed.g = ( ( parsed.hexValue >> 5 ) & 0x3F );
+	parsed.b = ( parsed.hexValue & 0x1F );
 	//printf( "Output\nHex 565: #%04X\n", parsed.hexValue );
 return parsed;
 }
