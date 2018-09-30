@@ -50,7 +50,8 @@ return parsed;
 }
 
 
-hex2rgb parseRgb888( hex2rgb hexParse ){
+hex2rgb parseRgb888( hex2rgb hexParse )
+{
 	hex2rgb parsed;
 	parsed.r = ( ( hexParse.hexValue >> 16 ) & 0xff );
 	parsed.g = ( ( hexParse.hexValue >> 8 ) & 0xff );
